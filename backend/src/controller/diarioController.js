@@ -29,8 +29,8 @@ endpoints.get('/diario', autenticar, async(req, resp) => {
         let id_usuario = req.user.id
         let registros = await db.buscarConteudo(id_usuario)
 
-    
         resp.send(registros)
+
     } catch (err) {
         resp.status(400).send({
             erro: err.message
@@ -52,6 +52,49 @@ endpoints.get('/diario/:id', autenticar, async (req, resp) => {
         })
     }
 })
+
+
+endpoints.put('/diario/:id', autenticar, async (req, resp) => {
+    try {
+        let id = req.params.id;
+        let diario = req.body;
+
+        let resposta = await db.alterarDiario(id, diario);
+        if (resposta >= 1) {
+            resp.send();
+        }
+        else {
+            resp.status(404).send({ erro: 'Nenhum registro encontrado' })
+        }
+    }
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+
+endpoints.delete('/diario/:id', autenticar, async (req, resp) => {
+    try {
+        let id = req.params.id;
+
+        let resposta = await db.removerDiario(id);
+        if (resposta >= 1) {
+            resp.send();
+        }
+        else {
+            resp.status(404).send({ erro: 'Nenhum registro encontrado' })
+        }
+    }
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+
 
 export default endpoints
 

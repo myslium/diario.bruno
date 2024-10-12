@@ -19,7 +19,7 @@ export default function Login() {
         }
 
         const url = `http://localhost:2007/usuario`
-        let resp = axios.post(url, novoUsuario)
+        axios.post(url, novoUsuario)
 
         alert('Novo usuario')
 

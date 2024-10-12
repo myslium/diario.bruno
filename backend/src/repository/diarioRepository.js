@@ -29,7 +29,7 @@ export async function buscarConteudo(idUsuario) {
         ON diario.id_usuario = usuario.id_usuario
     where usuario.id_usuario = ?
     `
-    let [resposta] = await con.query(comando, [idUsuario])
+    let resposta = await con.query(comando, [idUsuario])
 
     let info = resposta[0]
 
@@ -56,4 +56,30 @@ export async function buscarConteudoPorID(id) {
     let info = resposta[0]
 
     return info
+}
+
+export async function removerDiario(id) {
+    const comando = `
+        delete from tb_diario
+         where id_diario = ?
+    `
+
+    let resposta = await con.query(comando, [id]);
+    let info = resposta[0];
+
+    return info.affectedRows;
+}
+
+export async function alterarDiario(id, diario) {
+    const comando = `
+         update tb_diario 
+            set dt_dia = ?,
+                ds_conteudo = ?
+            where id_diario = ?;
+    `
+
+    let resposta = await con.query(comando, [diario.dia, diario.conteudo, id])
+    let info = resposta[0];
+
+    return info.affectedRows;
 }
