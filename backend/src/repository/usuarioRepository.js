@@ -16,12 +16,13 @@ export async function inserirUsuario(usuario) {
 export async function validacao(usuario) {
 
     const comando = `
-        select
-            id_usuario id,
-            nm_usuario nome
+        select 
+           id_usuario id,
+           nm_usuario nome
         from tb_usuario
         where nm_usuario = ?
-        and   ds_senha = ?
+              and ds_senha = ?
+
     `
 
     let [resposta] = await con.query(comando, [usuario.nome, usuario.senha])

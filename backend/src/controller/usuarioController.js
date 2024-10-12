@@ -12,8 +12,8 @@ endpoints.post('/entrar', async (req, resp) => {
 
         let pessoa = await db.validacao(usuario)
 
-        if (pessoa == null) {
-            resp.send({ erro: "Usuário ou senha incorreto(s)" })
+        if (!pessoa) {
+            resp.send({ erro: "Usuário ou senha incorreto(s)" });
         }
         else {
             let token = gerarToken(pessoa)
@@ -35,7 +35,7 @@ endpoints.post('/usuario', async (req, resp) => {
 
         let id = await db.inserirUsuario(usuario)
 
-        resp.send({
+        resp.status(200).send({
             id: id
         })
     } catch (err) {

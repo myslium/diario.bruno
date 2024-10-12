@@ -1,4 +1,4 @@
-.pagina-login {
+.pagina-cadastro {
     background-color:#f6e4f8;
     height: 100vh;
 
@@ -14,22 +14,6 @@
             width: 25vw;
             padding: 3vw 5vw 5vw 5vw;
             border-radius: 2vw;
-
-            a {
-                text-decoration: none;
-
-                p {
-                    font-family: 'Montserrat', sans-serif;
-                    color: #38063f;
-                    font-size: 1vw;
-                    font-weight: 400;
-                    margin-bottom: 1vw;
-                }
-                p:hover {
-                    color: #f7acff;
-                    font-weight: 500;
-                }
-            }
 
             .input {
                 display: flex;
@@ -71,7 +55,7 @@
               
               
             }  button {
-                    padding: 1vw 6vw;
+                    padding: 1vw 5vw;
                     background-color: #fafcff;
                     border-radius: 1vw;
                     font-family: 'Montserrat', sans-serif;

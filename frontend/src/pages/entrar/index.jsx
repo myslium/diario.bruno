@@ -1,6 +1,6 @@
 import './index.scss'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
 
@@ -8,7 +8,6 @@ export default function Home(){
 
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
-
     const Navegation = useNavigate()
 
     async function acessar() {
@@ -18,7 +17,15 @@ export default function Home(){
         }
 
         const url = `http://localhost:2007/entrar`
-        let resposta = await axios.post(url, usuario)
+        let resp = await axios.post(url, usuario)
+
+        if(resp.data.erro !== undefined) {
+            alert(resp.data.erro)
+        }
+        else{
+            localStorage.setItem('USUARIO', resp.data.token)
+            Navegation('/cadastrar')
+        }
     }
 
     return (
@@ -27,17 +34,30 @@ export default function Home(){
             <main>
                 <section className='login'>
 
+                    
+
                     <div className='input'>
                         <label>Nome:</label>
-                        <input type="text" placeholder='Usuario' />
+
+                        <div>
+                            <i className='fa fa-user icon'></i>
+                            <input type="text" placeholder='Usuario' value={nome} onChange={e => setNome(e.target.value)} />
+                        </div>
                     </div>
 
                     <div className='input'>
                         <label>Senha:</label>
-                        <input type="password" placeholder='Senha' />
+
+                        <div>
+                            <i className='fa fa-lock icon'></i>
+                            <input type="password" placeholder='Senha' value={senha} onChange={e => setSenha(e.target.value)}/>
+
+                        </div>
                     </div>
 
-                    <button>Entrar</button>
+                    <Link to='/login'><p>Não possui cadastro? Cadastrar</p></Link>
+
+                    <button onClick={acessar}>Entrar</button>
                     
                 </section>
             </main>
