@@ -1,0 +1,58 @@
+.pagina-login {
+    background-color:#bdcff0;
+    height: 100vh;
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 12vw;
+
+        .login {
+            background-color: #2a4e92;
+            height: 25vw;
+            width: 25vw;
+            padding: 5vw 5vw 5vw 5vw;
+            border-radius: 2vw;
+
+            .input {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5vw;
+                margin-bottom: 2vw;
+
+
+                label {
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 1.5vw;
+                    color: #f1f6ff;
+                    font-weight: 600;
+                }
+                input {
+                    width: 15vw;
+                    height: 2vw;
+                    border: 0.1vw solid #fbfcff;
+                    padding: 1vw 0.5vw;
+                    color: #071327;
+                    font-size: 1vw;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    outline: none;
+                    border-radius: 0.4vw;
+                }
+
+              
+            }  button {
+                    padding: 1vw 6.2vw;
+                    background-color: #fafcff;
+                    border-radius: 1vw;
+                    font-family: 'Montserrat', sans-serif;
+                    color: #071327;
+                    font-size: 1vw;
+                    font-weight: 700;
+                    border: none;
+                    cursor: pointer;
+                }
+        }
+    }
+}

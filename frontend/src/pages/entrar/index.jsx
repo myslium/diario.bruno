@@ -1,11 +1,28 @@
 import './index.scss'
 
 
-export default function Login() {
+export default function Home(){
 
     return (
         <div className='pagina-login'>
             
+            <main>
+                <section className='login'>
+
+                    <div className='input'>
+                        <label>Nome:</label>
+                        <input type="text" placeholder='Usuario' />
+                    </div>
+
+                    <div className='input'>
+                        <label>Senha:</label>
+                        <input type="password" placeholder='Senha' />
+                    </div>
+
+                    <button>Entrar</button>
+                    
+                </section>
+            </main>
         </div>
     )
 }
